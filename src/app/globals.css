@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* SasteGhar design tokens (mirrors the brief) */
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-text-muted: #999999;
+    --color-accent: #8b6f47;
+    --color-accent-hover: #6d5638;
+    --color-bg-secondary: #f7f5f2;
+    --color-bg-tertiary: #f0ede8;
+    --color-border: #e5e0d8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    /* Prevent overscroll bounce on iOS */
+    overscroll-behavior-y: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    @apply tracking-tight;
+  }
+
+  /* Prevent iOS auto-zoom on focus: inputs must be >= 16px */
+  input, textarea, select {
+    font-size: 16px;
+  }
+
+  /* Accessible focus rings in the accent color */
+  :focus-visible {
+    @apply outline-none ring-2 ring-secondary ring-offset-2 ring-offset-canvas;
+  }
+
+  ::selection {
+    @apply bg-secondary text-white;
+  }
+
+  /* Native <select> option list — keep readable colors */
+  option,
+  optgroup {
+    color: #1a1a1a;
+    background-color: #ffffff;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-line-strong rounded-full;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Card surface used across every ported property component */
+  .card-surface {
+    @apply bg-white rounded-2xl shadow-card border border-line;
+  }
+
+  .section-pad {
+    @apply py-[60px] sm:py-20 lg:py-[120px];
+  }
+
+  /* Section eyebrow label — 12px uppercase, wide tracking, muted */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-eyebrow text-secondary;
+  }
+
+  /* Liquid-glass pill — same glass family as GlassSurface's fallback, sized to
+     the button. Use on dark imagery (hero). White content shows less effect. */
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(14px) saturate(1.7);
+    backdrop-filter: blur(14px) saturate(1.7);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+      0 8px 32px rgba(17, 17, 26, 0.18),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+  .glass-pill:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Accent-tinted glass — stays legible on light backgrounds (sticky CTA). */
+  .glass-pill-accent {
+    background: rgba(139, 111, 71, 0.82);
+    -webkit-backdrop-filter: blur(10px) saturate(1.5);
+    backdrop-filter: blur(10px) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+      0 8px 28px rgba(139, 111, 71, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+    transition: background 0.25s ease;
+  }
+  .glass-pill-accent:hover {
+    background: rgba(109, 86, 56, 0.9);
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    @apply relative overflow-hidden bg-cream-deep;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+/* Respect reduced-motion: swap transforms for simple opacity */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Leaflet map sizing (leaflet CSS is imported inside MapView) */
+.leaflet-container {
+  @apply rounded-2xl z-0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+.leaflet-popup-content-wrapper {
+  @apply rounded-xl;
+}
