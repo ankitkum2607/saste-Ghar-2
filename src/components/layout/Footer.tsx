@@ -91,7 +91,7 @@ export function Footer() {
           {/* Offices */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-white/50">
-              Offices
+              Visit Us
             </h3>
             <ul className="mt-4 space-y-5">
               {OFFICES.map((o) => (

@@ -8,9 +8,9 @@ export const SITE = {
   description:
     "Fresh Buy launches and resale flats across twelve Indian cities — every one walked, measured, and checked against its paperwork before it reaches you.",
   url: "https://sasteghar.in",
-  phone: "+91 124 486 2200",
-  phoneHref: "+911244862200",
-  whatsapp: "911244862200",
+  phone: "081980 31117",
+  phoneHref: "+918198031117",
+  whatsapp: "918198031117",
   email: "hello@sasteghar.in",
   socials: {
     instagram: "https://instagram.com",
@@ -128,27 +128,14 @@ export const TESTIMONIALS = [
   },
 ];
 
-/** Footer offices. */
+/** Office — single location. */
 export const OFFICES = [
   {
-    city: "Gurugram",
+    city: "Mohali",
     label: "Head Office",
-    address: "Level 12, The Presidium, Golf Course Road, Sector 54, Gurugram 122002",
-    phone: "+91 124 486 2200",
-    phoneHref: "+911244862200",
-  },
-  {
-    city: "Mumbai",
-    label: "West India",
-    address: "8th Floor, Quay House, Bandra Kurla Complex, Mumbai 400051",
-    phone: "+91 22 6820 1400",
-    phoneHref: "+912268201400",
-  },
-  {
-    city: "Bengaluru",
-    label: "South India",
-    address: "The Exchange, 4th Floor, Whitefield Main Road, Bengaluru 560066",
-    phone: "+91 80 4713 9800",
-    phoneHref: "+918047139800",
+    address:
+      "SCO 5-6, Level II, near Waycup Cafe, Sector 68, Sahibzada Ajit Singh Nagar, Punjab 160062",
+    phone: "081980 31117",
+    phoneHref: "+918198031117",
   },
 ];

@@ -28,7 +28,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About SasteGhar"
         title="A property business built on trust."
-        subtitle="We started in one room above a bank on Golf Course Road, convinced the property business was broken in a fixable way. Twelve cities later, that conviction hasn't changed."
+        subtitle="We started in one room above a bank in Sector 68, Mohali, convinced the property business was broken in a fixable way. Twelve cities later, that conviction hasn't changed."
         crumbs={[{ label: "About" }]}
       />
       <section className="section-pad">

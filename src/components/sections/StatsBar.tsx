@@ -34,7 +34,7 @@ export function StatsBar() {
               }}
               className="text-center lg:text-left"
             >
-              <p className="font-heading text-4xl font-bold text-accent sm:text-5xl">
+              <p className="whitespace-nowrap font-heading text-3xl font-bold text-accent sm:text-4xl">
                 <CountUp
                   to={s.value}
                   prefix={s.prefix ?? ""}

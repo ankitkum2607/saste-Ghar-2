@@ -104,8 +104,7 @@
   outline-offset: 2px;
 }
 
-/* Header pill: hug the inner content (logo + nav) instead of filling width */
+/* Header capsule: content fills the fixed-width glass bar */
 .glass-header .glass-surface__content {
   padding: 0;
-  width: auto;
 }
