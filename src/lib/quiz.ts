@@ -1,4 +1,4 @@
-import type { Property } from "@/types";
+import type { Property, PropertyType } from "@/types";
 import { properties } from "@/lib/data/properties";
 
 export interface QuizOption {
@@ -7,129 +7,209 @@ export interface QuizOption {
   description?: string;
 }
 
+export type QuizStepId = "propertyType" | "subType" | "location" | "timeline" | "buyerType";
+
 export interface QuizStep {
-  id: "city" | "budget" | "beds" | "timeline";
+  id: QuizStepId;
   eyebrow: string;
   question: string;
   options: QuizOption[];
 }
 
-/** Cities that actually have inventory, derived from the mock data. */
-const CITIES = Array.from(new Set(properties.map((p) => p.city))).sort();
+export type QuizAnswers = Partial<Record<QuizStepId, string>>;
 
-export const QUIZ_STEPS: QuizStep[] = [
-  {
-    id: "city",
-    eyebrow: "Question 1 of 4",
-    question: "Which city are you looking in?",
+export const QUIZ_STEPS_CONFIG: Record<Exclude<QuizStepId, "subType">, QuizStep> & {
+  subType: (answers: QuizAnswers) => QuizStep;
+} = {
+  propertyType: {
+    id: "propertyType" as QuizStepId,
+    eyebrow: "Step 1",
+    question: "What type of property are you interested in?",
     options: [
-      { value: "any", label: "Open to any city", description: "Show me the best fit anywhere" },
-      ...CITIES.map((c) => ({ value: c, label: c })),
+      { value: "residential", label: "Residential", description: "Villas, flats, and residential plots" },
+      { value: "commercial", label: "Commercial", description: "SCOs, showrooms, and commercial plots" },
     ],
   },
-  {
-    id: "budget",
-    eyebrow: "Question 2 of 4",
-    question: "What's your budget?",
+  subType: (answers: QuizAnswers): QuizStep => ({
+    id: "subType" as QuizStepId,
+    eyebrow: "Step 2",
+    question: "Which category fits your requirement?",
+    options:
+      answers.propertyType === "commercial"
+        ? [
+            { value: "plot", label: "Plot", description: "Commercial land" },
+            { value: "shop_sco", label: "Shop/SCO's", description: "Shop-cum-Offices" },
+            { value: "showroom", label: "Showrooms", description: "Premium display spaces" },
+          ]
+        : [
+            { value: "plot", label: "Plot", description: "Residential land" },
+            { value: "flat", label: "Flat", description: "Apartments & penthouses" },
+            { value: "villa", label: "Villa", description: "Independent houses & villas" },
+          ],
+  }),
+  location: {
+    id: "location" as QuizStepId,
+    eyebrow: "Step 3",
+    question: "Which location do you prefer?",
     options: [
-      { value: "u1", label: "Under ₹1 Cr", description: "Entry and starter flats" },
-      { value: "1-2", label: "₹1 – 2 Cr", description: "Mid-range residences" },
-      { value: "2-4", label: "₹2 – 4 Cr", description: "Premium homes" },
-      { value: "4+", label: "₹4 Cr and above", description: "The top of the collection" },
+      { value: "Kharar Landran Road", label: "Kharar Landran Road" },
+      { value: "Banur Road", label: "Banur Road" },
+      { value: "Kurali bypass", label: "Kurali bypass" },
+      { value: "New Chandigarh", label: "New Chandigarh" },
+      { value: "Mohali Main Sectors", label: "Mohali Main Sectors" },
+      { value: "Zirakpur", label: "Zirakpur" },
+      { value: "Chandigarh Ambala highway", label: "Chandigarh Ambala highway" },
     ],
   },
-  {
-    id: "beds",
-    eyebrow: "Question 3 of 4",
-    question: "How much space does your family need?",
+  timeline: {
+    id: "timeline" as QuizStepId,
+    eyebrow: "Step 4",
+    question: "What is your preferred possession timeline?",
     options: [
-      { value: "2", label: "2 BHK", description: "A couple or a small family" },
-      { value: "3", label: "3 BHK", description: "A growing family" },
-      { value: "4", label: "4 BHK", description: "Room for everyone" },
+      { value: "ready", label: "Ready to move", description: "Immediate possession" },
+      { value: "pre_launch", label: "Pre launch", description: "Under construction / upcoming" },
     ],
   },
-  {
-    id: "timeline",
-    eyebrow: "Question 4 of 4",
-    question: "When do you want to move in?",
+  buyerType: {
+    id: "buyerType" as QuizStepId,
+    eyebrow: "Step 5",
+    question: "What is your buying purpose?",
     options: [
-      { value: "ready", label: "Ready to move", description: "I want the keys soon" },
-      { value: "soon", label: "Within a year", description: "I can wait a little" },
-      { value: "later", label: "Planning ahead", description: "A fresh launch is fine" },
+      { value: "end_user", label: "End user", description: "Buying to live / occupy" },
+      { value: "investor", label: "Investor", description: "Buying for capital gain / rental income" },
     ],
   },
-];
-
-export type QuizAnswers = Partial<Record<QuizStep["id"], string>>;
-
-const BUDGET: Record<string, [number, number]> = {
-  u1: [0, 10_000_000],
-  "1-2": [10_000_000, 20_000_000],
-  "2-4": [20_000_000, 40_000_000],
-  "4+": [40_000_000, Number.POSITIVE_INFINITY],
 };
+
+/**
+ * Returns the next step ID in the branching questionnaire flow based on current answers.
+ * Returns null if the flow should end.
+ */
+export function getNextStepId(currentId: QuizStepId, answers: QuizAnswers): QuizStepId | null {
+  if (currentId === "propertyType") {
+    return "subType";
+  }
+  if (currentId === "subType") {
+    return "location";
+  }
+  if (currentId === "location") {
+    return "timeline";
+  }
+  if (currentId === "timeline") {
+    return "buyerType";
+  }
+  return null;
+}
+
+/**
+ * Gets the list of steps that make up the active path based on current answers.
+ */
+export function getPathSteps(answers: QuizAnswers): QuizStep[] {
+  return [
+    QUIZ_STEPS_CONFIG.propertyType,
+    QUIZ_STEPS_CONFIG.subType(answers),
+    QUIZ_STEPS_CONFIG.location,
+    QUIZ_STEPS_CONFIG.timeline,
+    QUIZ_STEPS_CONFIG.buyerType,
+  ].map((step, idx) => ({
+    ...step,
+    eyebrow: `Question ${idx + 1} of 5`,
+  }));
+}
 
 export interface Shortlist {
   matches: Property[];
-  /** true when the matches genuinely satisfy city + budget + size. */
   exact: boolean;
 }
 
 /**
- * Score every flat against the answers and return up to three. If at least one
- * flat truly fits (right city, within budget, enough bedrooms) we return those;
- * otherwise we relax and return the closest three, flagged so the UI can be
- * honest that nothing fit exactly.
+ * Scores every flat against the answers and returns matching properties.
  */
 export function shortlistProperties(answers: QuizAnswers): Shortlist {
-  const need = answers.beds ? Number(answers.beds) : 0;
-  const [minP, maxP] = answers.budget ? BUDGET[answers.budget] : [0, Infinity];
-  const city = answers.city && answers.city !== "any" ? answers.city : null;
-
   const scored = properties.map((p) => {
     let score = 0;
+    let matchesCriteria = true;
 
-    // City
-    if (!city) score += 1;
-    else if (p.city === city) score += 3;
-
-    // Budget
-    if (p.price >= minP && p.price <= maxP) score += 3;
-    else if (p.price <= maxP * 1.1) score += 1;
-
-    // Bedrooms
-    if (need) {
-      if (p.bedrooms === need) score += 3;
-      else if (p.bedrooms >= need) score += 1;
-    } else {
-      score += 1;
+    // 1. Property Type (Residential vs Commercial)
+    if (answers.propertyType) {
+      const isCommercial = p.propertyType === "commercial";
+      const wantCommercial = answers.propertyType === "commercial";
+      if (isCommercial === wantCommercial) {
+        score += 10;
+      } else {
+        matchesCriteria = false;
+      }
     }
 
-    // Timeline
-    const ready = p.possession.toLowerCase().includes("ready");
-    if (answers.timeline === "ready") score += ready ? 3 : 0;
-    else if (answers.timeline === "soon") score += ready || p.kind === "fresh-buy" ? 2 : 0;
-    else if (answers.timeline === "later") score += p.kind === "fresh-buy" ? 3 : 1;
-    else score += 1;
+    // 2. Sub-Type (Plot, Flat, Villa, Shop/SCO's, Showrooms)
+    if (answers.subType) {
+      if (answers.subType === "flat") {
+        if (p.propertyType === "apartment") score += 10;
+        else matchesCriteria = false;
+      } else if (answers.subType === "villa") {
+        if (p.propertyType === "villa") score += 10;
+        else matchesCriteria = false;
+      } else if (answers.subType === "plot") {
+        if (p.propertyType === "land") score += 10;
+        else matchesCriteria = false;
+      } else if (answers.subType === "shop_sco") {
+        if (p.propertyType === "commercial" && p.slug.includes("sco")) score += 10;
+        else if (p.propertyType === "commercial") score += 5;
+        else matchesCriteria = false;
+      } else if (answers.subType === "showroom") {
+        if (p.propertyType === "commercial" && p.slug.includes("showroom")) score += 10;
+        else if (p.propertyType === "commercial") score += 5;
+        else matchesCriteria = false;
+      }
+    }
 
-    return { p, score };
+    // 3. Location
+    if (answers.location) {
+      if (p.city.toLowerCase() === answers.location.toLowerCase()) {
+        score += 10;
+      } else {
+        matchesCriteria = false;
+      }
+    }
+
+    // 4. Timeline
+    if (answers.timeline) {
+      const isReady = p.possession.toLowerCase().includes("ready");
+      const wantReady = answers.timeline === "ready";
+      if (isReady === wantReady) {
+        score += 10;
+      } else {
+        score += 2;
+      }
+    }
+
+    // 5. Buyer type
+    if (answers.buyerType) {
+      if (answers.buyerType === "investor") {
+        const isCommercial = p.propertyType === "commercial";
+        const isFresh = p.kind === "fresh-buy";
+        if (isCommercial || isFresh) score += 5;
+      } else {
+        const isReady = p.possession.toLowerCase().includes("ready");
+        const isResi = p.propertyType !== "commercial";
+        if (isReady && isResi) score += 5;
+      }
+    }
+
+    return { p, score, matchesCriteria };
   });
 
-  const fits = (p: Property) =>
-    (!city || p.city === city) &&
-    p.price <= maxP * 1.05 &&
-    (!need || p.bedrooms >= need);
-
+  // Filter properties that fit the requirements
   const hard = scored
-    .filter((s) => fits(s.p))
+    .filter((s) => s.matchesCriteria)
     .sort((a, b) => b.score - a.score || a.p.price - b.p.price);
 
   if (hard.length > 0) {
     return { matches: hard.slice(0, 3).map((s) => s.p), exact: true };
   }
 
-  const relaxed = [...scored].sort(
-    (a, b) => b.score - a.score || a.p.price - b.p.price
-  );
+  // Fallback to relaxed scoring if no exact matches
+  const relaxed = [...scored]
+    .sort((a, b) => b.score - a.score || a.p.price - b.p.price);
   return { matches: relaxed.slice(0, 3).map((s) => s.p), exact: false };
 }
