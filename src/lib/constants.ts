@@ -6,7 +6,7 @@ export const SITE = {
   descriptor: "Fine Residences",
   tagline: "Find Your Next Chapter, Not Just Your Next Home.",
   description:
-    "Fresh Buy launches and resale flats across twelve Indian cities — every one walked, measured, and checked against its paperwork before it reaches you.",
+    "Fresh Buy launches and resale flats across Tricity (Mohali, Chandigarh, Zirakpur, Banur Road, Kharar) — every one walked, measured, and checked against its paperwork before it reaches you.",
   url: "https://sasteghar.in",
   phone: "081980 31117",
   phoneHref: "+918198031117",
@@ -102,28 +102,28 @@ export const TESTIMONIALS = [
     quote:
       "We had seen eleven flats in three weeks and were ready to give up. SasteGhar looked at our shortlist, told us honestly that none of them worked for a family with two young kids, and showed us one that did. We moved in four months later.",
     name: "Ritu & Pranav Bansal",
-    detail: "Bought a 4 BHK in Gurugram",
+    detail: "Bought a 4 BHK in Zirakpur",
     photo: "https://i.pravatar.cc/96?img=32",
   },
   {
     quote:
       "I sold through them six years after buying. They already had the floor plan and the paperwork from the original sale on file, so there was nothing to reconstruct. It closed in five weeks.",
     name: "Kabir Raina",
-    detail: "Sold a 3 BHK in Powai",
+    detail: "Sold a 3 BHK in Mohali",
     photo: "https://i.pravatar.cc/96?img=12",
   },
   {
     quote:
       "I was buying from Singapore and could not visit. They walked me through the flat on video three separate times, including once in the rain because I asked what the drainage was like. That is not something you get everywhere.",
     name: "Anjali Krishnan",
-    detail: "Bought a 3 BHK in Bengaluru",
+    detail: "Bought a 3 BHK in Banur Road",
     photo: "https://i.pravatar.cc/96?img=45",
   },
   {
     quote:
       "No pressure, no daily calls, no invented urgency. They sent me three flats that actually matched my brief and told me the fourth one I had asked about was overpriced. I bought the second.",
     name: "Farhan Ali",
-    detail: "Bought a 2 BHK in Pune",
+    detail: "Bought a 2 BHK in Kharar",
     photo: "https://i.pravatar.cc/96?img=59",
   },
 ];

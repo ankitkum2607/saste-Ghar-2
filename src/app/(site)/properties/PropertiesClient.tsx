@@ -313,7 +313,7 @@ export function PropertiesClient() {
           <FilterGroup label="City">
             <input
               type="text"
-              placeholder="e.g. Bengaluru"
+              placeholder="e.g. Mohali"
               value={draft.city}
               onChange={(e) => setDraft((d) => ({ ...d, city: e.target.value }))}
               className="h-11 w-full rounded-xl border border-line-strong bg-white px-3 text-sm"

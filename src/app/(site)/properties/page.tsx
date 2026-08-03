@@ -6,7 +6,7 @@ import { PropertiesClient } from "./PropertiesClient";
 export const metadata: Metadata = {
   title: "The Collection — Flats for Sale",
   description:
-    "Browse Fresh Buy launches and resale flats across twelve Indian cities. Filter by price, city, configuration, and amenities.",
+    "Browse Fresh Buy launches and resale flats across Tricity (Mohali, Chandigarh, Zirakpur, Banur Road, Kharar). Filter by price, city, configuration, and amenities.",
 };
 
 export default function PropertiesPage() {
@@ -15,7 +15,7 @@ export default function PropertiesPage() {
       <PageHeader
         eyebrow="The Collection"
         title="Currently on the market."
-        subtitle="Fresh Buy launches and resale flats across twelve cities. Use the filters to narrow by price, configuration, city, and amenities — or open the map to browse by location."
+        subtitle="Fresh Buy launches and resale flats across Tricity. Use the filters to narrow by price, configuration, city, and amenities — or open the map to browse by location."
         crumbs={[{ label: "Properties" }]}
       />
       <div className="container-px py-12 sm:py-16">

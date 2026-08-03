@@ -19,26 +19,28 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sasteghar.in"),
   title: {
-    default: "SasteGhar — Fine Residences Across Twelve Cities",
+    default: "SasteGhar — Fine Residences in Mohali & Chandigarh",
     template: "%s · SasteGhar",
   },
   description:
-    "Fresh Buy launches and resale flats across twelve Indian cities — every one walked, measured, and checked against its paperwork before it reaches you.",
+    "Fresh Buy launches and resale flats across Tricity (Mohali, Chandigarh, Zirakpur, Banur Road, Kharar) — every one walked, measured, and checked against its paperwork before it reaches you.",
   keywords: [
     "real estate India",
     "flats for sale",
     "resale apartments",
     "new launches",
-    "Gurugram",
-    "Bengaluru",
-    "Mumbai",
+    "Mohali",
+    "Chandigarh",
+    "Zirakpur",
+    "New Chandigarh",
+    "Kharar",
   ],
   openGraph: {
     type: "website",
     siteName: "SasteGhar",
-    title: "SasteGhar — Fine Residences Across Twelve Cities",
+    title: "SasteGhar — Fine Residences in Mohali & Chandigarh",
     description:
-      "Fresh Buy launches and resale flats across twelve Indian cities.",
+      "Fresh Buy launches and resale flats across Tricity (Mohali, Chandigarh, Zirakpur, Banur Road, Kharar).",
   },
 };
 

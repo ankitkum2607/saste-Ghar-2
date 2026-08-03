@@ -41,7 +41,7 @@ export function Hero() {
           {...line(0.2)}
           className="mb-4 text-xs font-semibold uppercase tracking-eyebrow text-white/80"
         >
-          Fine Residences Across Twelve Cities
+          Fine Residences Across Tricity
         </motion.p>
 
         <h1 className="max-w-4xl font-heading text-[36px] font-semibold leading-[1.1] text-white sm:text-5xl lg:text-[64px]">
@@ -57,7 +57,7 @@ export function Hero() {
           {...line(0.9)}
           className="mt-6 max-w-[480px] text-base leading-relaxed text-white/85 sm:text-lg"
         >
-          Fresh Buy launches and resale flats across twelve cities — every one
+          Fresh Buy launches and resale flats across Tricity — every one
           walked, measured, and checked against its paperwork before it reaches
           you.
         </motion.p>

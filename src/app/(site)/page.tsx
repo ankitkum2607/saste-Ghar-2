@@ -4,6 +4,9 @@ import { FeaturedGallery } from "@/components/sections/FeaturedGallery";
 import { WhySasteGhar } from "@/components/sections/WhySasteGhar";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { PropertyCollection } from "@/components/sections/PropertyCollection";
+import { WhoWeAre } from "@/components/sections/WhoWeAre";
+import { WhatWeDo } from "@/components/sections/WhatWeDo";
+import { HowWeDo } from "@/components/sections/HowWeDo";
 import { SellingSection } from "@/components/sections/SellingSection";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -20,6 +23,9 @@ export default function HomePage() {
       <WhySasteGhar />
       <StatsBar />
       <PropertyCollection properties={collection} />
+      <WhoWeAre />
+      <WhatWeDo />
+      <HowWeDo />
       <SellingSection />
       <Testimonials />
       <FinalCTA />

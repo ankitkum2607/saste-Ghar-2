@@ -23,61 +23,54 @@ const amen = (over: Partial<Amenities> = {}): Amenities => ({
 
 /** Typed nearby set per city (school / hospital / shopping / transport / park). */
 const nearby: Record<string, NearbyPlace[]> = {
-  Gurugram: [
-    { name: "The Shri Ram School, Aravali", type: "school", distance: "2.1 km" },
-    { name: "Medanta – The Medicity", type: "hospital", distance: "3.8 km" },
-    { name: "Airia Mall, Sector 68", type: "shopping", distance: "1.6 km" },
-    { name: "Sector 55–56 Rapid Metro", type: "transport", distance: "1.3 km" },
-    { name: "Aravalli Biodiversity Park", type: "park", distance: "2.4 km" },
+  "Zirakpur": [
+    { name: "St. Xavier's High School", type: "school", distance: "2.1 km" },
+    { name: "JP Hospital, Zirakpur", type: "hospital", distance: "3.8 km" },
+    { name: "Cosmo Mall, Zirakpur", type: "shopping", distance: "1.6 km" },
+    { name: "Chandigarh Airport (IXC)", type: "transport", distance: "6.5 km" },
+    { name: "Zirakpur Town Park", type: "park", distance: "1.2 km" },
   ],
-  Bengaluru: [
-    { name: "Inventure Academy", type: "school", distance: "2.9 km" },
-    { name: "Manipal Hospital, Whitefield", type: "hospital", distance: "3.1 km" },
-    { name: "Phoenix Marketcity, Mahadevapura", type: "shopping", distance: "4.2 km" },
-    { name: "Whitefield (Kadugodi) Metro", type: "transport", distance: "1.6 km" },
-    { name: "Kadugodi Tree Park", type: "park", distance: "1.1 km" },
+  "Banur Road": [
+    { name: "Chitkara University", type: "school", distance: "2.9 km" },
+    { name: "Neelam Hospital", type: "hospital", distance: "3.1 km" },
+    { name: "Banur Plaza", type: "shopping", distance: "4.2 km" },
+    { name: "Banur Bus Stand", type: "transport", distance: "1.6 km" },
+    { name: "Sukhna Wildlife Sanctuary", type: "park", distance: "8.5 km" },
   ],
-  Mumbai: [
-    { name: "Dhirubhai Ambani International", type: "school", distance: "1.8 km" },
-    { name: "Lilavati Hospital", type: "hospital", distance: "2.7 km" },
-    { name: "Palladium, Lower Parel", type: "shopping", distance: "3.5 km" },
-    { name: "Bandra–Kurla Complex Metro", type: "transport", distance: "1.1 km" },
-    { name: "Worli Sea Face Promenade", type: "park", distance: "0.5 km" },
+  "Mohali Main Sectors": [
+    { name: "Manav Mangal Smart School", type: "school", distance: "1.8 km" },
+    { name: "Fortis Hospital Mohali", type: "hospital", distance: "2.7 km" },
+    { name: "CP 67 Mall, Mohali", type: "shopping", distance: "3.5 km" },
+    { name: "Mohali Phase 11 Railway Station", type: "transport", distance: "1.1 km" },
+    { name: "Sector 70 Park", type: "park", distance: "0.5 km" },
   ],
-  Noida: [
-    { name: "Step by Step School", type: "school", distance: "1.9 km" },
-    { name: "Jaypee Hospital", type: "hospital", distance: "2.8 km" },
-    { name: "The Grand Venice Mall", type: "shopping", distance: "3.2 km" },
-    { name: "Sector 137 Aqua Line Metro", type: "transport", distance: "1.2 km" },
-    { name: "Okhla Bird Sanctuary", type: "park", distance: "5.0 km" },
+  "Kharar Landran Road": [
+    { name: "Chandigarh University (CU)", type: "school", distance: "4.9 km" },
+    { name: "Civil Hospital, Kharar", type: "hospital", distance: "2.8 km" },
+    { name: "Kharar Shopping Complex", type: "shopping", distance: "3.2 km" },
+    { name: "Kharar Bus Stand", type: "transport", distance: "1.2 km" },
+    { name: "Rose Garden Kharar", type: "park", distance: "1.5 km" },
   ],
-  Pune: [
-    { name: "The Bishop's School, Undri", type: "school", distance: "2.3 km" },
-    { name: "Ruby Hall Clinic", type: "hospital", distance: "4.5 km" },
-    { name: "Phoenix Marketcity, Viman Nagar", type: "shopping", distance: "3.4 km" },
-    { name: "Ramwadi Metro Station", type: "transport", distance: "2.7 km" },
-    { name: "Kharadi Riverside Park", type: "park", distance: "1.0 km" },
+  "Kurali bypass": [
+    { name: "Kurali Public School", type: "school", distance: "2.3 km" },
+    { name: "Civil Hospital Kurali", type: "hospital", distance: "4.5 km" },
+    { name: "Kurali Main Market", type: "shopping", distance: "3.4 km" },
+    { name: "Kurali Railway Station", type: "transport", distance: "2.7 km" },
+    { name: "Kurali City Park", type: "park", distance: "1.0 km" },
   ],
-  Delhi: [
-    { name: "Delhi Public School, Dwarka", type: "school", distance: "1.5 km" },
-    { name: "Manipal Hospital, Dwarka", type: "hospital", distance: "2.2 km" },
-    { name: "Vegas Mall, Dwarka", type: "shopping", distance: "1.8 km" },
-    { name: "Sector 21 Airport Line Metro", type: "transport", distance: "1.4 km" },
-    { name: "Bharat Vandana Park", type: "park", distance: "2.6 km" },
+  "New Chandigarh": [
+    { name: "The Millennium School", type: "school", distance: "1.5 km" },
+    { name: "PGIMER (Post Graduate Institute)", type: "hospital", distance: "5.2 km" },
+    { name: "Omaxe Street Mall", type: "shopping", distance: "1.8 km" },
+    { name: "Chandigarh Metro Route", type: "transport", distance: "1.4 km" },
+    { name: "Sarangpur Botanical Garden", type: "park", distance: "2.6 km" },
   ],
-  Hyderabad: [
-    { name: "Oakridge International", type: "school", distance: "2.6 km" },
-    { name: "AIG Hospitals, Gachibowli", type: "hospital", distance: "2.1 km" },
-    { name: "Sarath City Capital Mall", type: "shopping", distance: "3.0 km" },
-    { name: "Raidurg Metro Station", type: "transport", distance: "1.7 km" },
-    { name: "Botanical Garden, Kondapur", type: "park", distance: "2.3 km" },
-  ],
-  Chennai: [
-    { name: "Sishya OMR", type: "school", distance: "2.0 km" },
-    { name: "Apollo Hospitals, Perungudi", type: "hospital", distance: "3.3 km" },
-    { name: "Marina Mall, Egattur", type: "shopping", distance: "2.7 km" },
-    { name: "OMR Bus Terminus", type: "transport", distance: "1.9 km" },
-    { name: "Thalambur Lake Park", type: "park", distance: "1.4 km" },
+  "Chandigarh Ambala highway": [
+    { name: "DPS Dera Bassi", type: "school", distance: "2.6 km" },
+    { name: "Dera Bassi Civil Hospital", type: "hospital", distance: "2.1 km" },
+    { name: "Decathlon Chandigarh-Ambala", type: "shopping", distance: "3.0 km" },
+    { name: "Ghaggar Railway Station", type: "transport", distance: "1.7 km" },
+    { name: "Highway Green Belt Park", type: "park", distance: "2.3 km" },
   ],
 };
 

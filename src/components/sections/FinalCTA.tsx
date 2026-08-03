@@ -43,7 +43,7 @@ export function FinalCTA() {
           transition={{ duration: 0.7, delay: 0.15, ease: ANIMATION.easeOut }}
           className="mx-auto mt-4 max-w-3xl font-heading text-[28px] font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
         >
-          Somewhere in twelve cities, there is a home that fits exactly.
+          Somewhere in the Tricity, there is a home that fits exactly.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
