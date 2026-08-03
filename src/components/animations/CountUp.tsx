@@ -24,9 +24,12 @@ export function CountUp({
   suffix?: string;
 }) {
   const count = useMotionValue(from);
-  const rounded = useTransform(count, (v) =>
-    Math.round(v).toLocaleString("en-IN")
-  );
+  const rounded = useTransform(count, (v) => {
+    if (to % 1 !== 0) {
+      return v.toFixed(1);
+    }
+    return Math.round(v).toLocaleString("en-IN");
+  });
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 

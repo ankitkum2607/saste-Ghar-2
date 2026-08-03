@@ -64,28 +64,28 @@ export const ANIMATION = {
 export const BENEFITS = [
   {
     number: "01",
-    title: "We have walked every flat",
-    body: "Nothing reaches this site unseen. We measure it, photograph it, and check it against its paperwork before you ever hear about it.",
+    title: "Safety & Security",
+    body: "Every property goes through our rigorous 18-point checklist. Backed by a dedicated legal and technical team to verify all approvals.",
   },
   {
     number: "02",
-    title: "We read the RERA filing",
-    body: "Every project on this site has had its registration, title, and approvals checked by our team. If something does not add up, it does not get listed.",
+    title: "Selective Builders",
+    body: "We work exclusively with selective builders and pre-screened projects to save your time, money, and energy.",
   },
   {
     number: "03",
-    title: "We tell you when it is overpriced",
-    body: "Even when it costs us the sale. A shortlist you can trust is worth more than a catalogue you cannot.",
+    title: "67% Referral Business",
+    body: "Our advisory house has been built on trust since 2011, with more than two-thirds of our business coming from repeat clients.",
   },
 ];
 
 /** Section 6 — Stats bar (count-up). */
-export const STATS = [
-  { value: 72, suffix: "%", label: "Of buyers shortlist within one visit" },
-  { value: 4200, suffix: "+", label: "Flats handed over" },
-  { value: 8400, prefix: "₹", suffix: " Cr", label: "Property transacted" },
-  { value: 96, suffix: "%", label: "Of asking achieved" },
-  { value: 12, suffix: "", label: "Cities across India" },
+export const STATS: { value: number; prefix?: string; suffix: string; label: string }[] = [
+  { value: 50, suffix: "+", label: "Trained professionals (200+ hours training)" },
+  { value: 2000, suffix: "+", label: "Happy clients served since 2011" },
+  { value: 500, suffix: "+", label: "Active real-estate investors" },
+  { value: 67, suffix: "%", label: "Referral & repeat business rate" },
+  { value: 4.7, suffix: "", label: "Google rating (250+ reviews)" },
 ];
 
 /** Section 8 — Selling mini-stats. */
