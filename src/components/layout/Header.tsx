@@ -15,7 +15,7 @@ export function Header() {
   const pathname = usePathname();
 
   const isSellPage = pathname === "/sell";
-  const ctaText = isSellPage ? "Sell Your Flat" : "Find Your Home";
+  const ctaText = isSellPage ? "Sell Your Flat" : "Find the right property";
   const ctaHref = isSellPage ? "/sell" : "/find";
 
   return (

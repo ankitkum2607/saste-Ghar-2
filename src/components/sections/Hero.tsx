@@ -67,7 +67,7 @@ export function Hero() {
             href="/find"
             className="glass-pill inline-flex min-h-[52px] items-center justify-center rounded-full px-9 font-medium text-white"
           >
-            Find Your Home
+            Find the right property
           </Link>
         </motion.div>
       </div>

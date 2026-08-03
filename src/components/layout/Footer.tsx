@@ -17,7 +17,7 @@ const columns = [
     title: "Discover",
     links: [
       { label: "Search Flats", href: "/properties" },
-      { label: "Find Your Home", href: "/find" },
+      { label: "Find the right property", href: "/find" },
       { label: "Book a Site Visit", href: "/contact" },
     ],
   },

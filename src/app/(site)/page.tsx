@@ -1,6 +1,7 @@
 import { getFeatured, getAllProperties } from "@/lib/repo";
 import { Hero } from "@/components/sections/Hero";
 import { FeaturedGallery } from "@/components/sections/FeaturedGallery";
+import { PropertyQuiz } from "@/components/property/PropertyQuiz";
 import { WhySasteGhar } from "@/components/sections/WhySasteGhar";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { PropertyCollection } from "@/components/sections/PropertyCollection";
@@ -20,6 +21,7 @@ export default function HomePage() {
     <>
       <Hero />
       <FeaturedGallery properties={featured} />
+      <PropertyQuiz className="section-pad bg-cream" />
       <WhySasteGhar />
       <StatsBar />
       <PropertyCollection properties={collection} />

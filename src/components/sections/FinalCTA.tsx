@@ -66,7 +66,7 @@ export function FinalCTA() {
             href="/find"
             className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-secondary px-8 font-medium text-white transition-colors hover:bg-secondary-700"
           >
-            Find Your Home
+            Find the right property
           </Link>
           <Link
             href="/contact"
