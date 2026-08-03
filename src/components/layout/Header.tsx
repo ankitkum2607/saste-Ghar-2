@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -10,29 +11,17 @@ import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
 
 export function Header() {
-  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      // Hide on scroll down (past the header), show on scroll up.
-      if (y > lastY && y > 140) setHidden(true);
-      else setHidden(false);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const isSellPage = pathname === "/sell";
+  const ctaText = isSellPage ? "Sell Your Flat" : "Find Your Home";
+  const ctaHref = isSellPage ? "/sell" : "/find";
 
   return (
     <>
       <header
-        className={cn(
-          "fixed inset-x-0 top-3 z-50 flex justify-center px-4 transition-transform duration-300",
-          hidden && !menuOpen ? "-translate-y-[160%]" : "translate-y-0"
-        )}
+        className="fixed inset-x-0 top-3 z-50 flex justify-center px-4 transition-transform duration-300 translate-y-0"
       >
         {/* One long liquid-glass capsule — the SAME look everywhere and at every
             scroll position (a constant dark-tinted glass so white text stays
@@ -50,11 +39,11 @@ export function Header() {
           {/* Constant dark scrim keeps white text readable on any background */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 to-black/25" />
 
-          <div className="relative flex w-full items-center justify-between gap-6 px-6 sm:px-9 lg:justify-center lg:gap-16">
+          <div className="relative flex w-full items-center justify-between gap-4 px-4 sm:px-6 lg:px-9">
             <Logo inverse />
 
             <nav
-              className="hidden items-center gap-9 lg:flex"
+              className="hidden items-center gap-6 lg:flex"
               aria-label="Primary"
             >
               {NAV_LINKS.map((link) => (
@@ -68,13 +57,22 @@ export function Header() {
               ))}
             </nav>
 
-            <button
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
-              className="-mr-1 grid h-10 w-10 place-items-center rounded-full text-white hover:bg-white/10 lg:hidden"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
+            <div className="flex items-center gap-3">
+              <Link
+                href={ctaHref}
+                className="inline-flex min-h-[36px] sm:min-h-[40px] items-center justify-center rounded-full bg-secondary px-3.5 sm:px-5 text-xs sm:text-sm font-medium text-white transition-colors hover:bg-secondary-700 shadow-soft"
+              >
+                {ctaText}
+              </Link>
+
+              <button
+                onClick={() => setMenuOpen(true)}
+                aria-label="Open menu"
+                className="-mr-1 grid h-10 w-10 place-items-center rounded-full text-white hover:bg-white/10 lg:hidden"
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
           </div>
         </GlassSurface>
       </header>
@@ -83,3 +81,4 @@ export function Header() {
     </>
   );
 }
+

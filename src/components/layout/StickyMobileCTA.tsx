@@ -36,7 +36,7 @@ export function StickyMobileCTA() {
         >
           <Link
             href="/find"
-            className="glass-pill-accent flex min-h-[48px] items-center justify-center gap-2 rounded-full font-medium text-white"
+            className="bg-secondary hover:bg-secondary-700 transition-colors flex min-h-[48px] items-center justify-center gap-2 rounded-full font-medium text-white shadow-soft"
           >
             <Search className="h-4 w-4" />
             Find Your Home
