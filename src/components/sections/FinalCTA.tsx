@@ -17,8 +17,8 @@ export function FinalCTA() {
         className="absolute inset-0"
       >
         <Image
-          src="https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=2000&q=80"
-          alt="A city skyline of residential towers at dusk"
+          src="https://images.unsplash.com/photo-1674821770946-4f774b1907d7?auto=format&fit=crop&w=2000&q=80"
+          alt="A skyline of modern Indian residential complexes at dusk"
           fill
           sizes="100vw"
           className="object-cover"

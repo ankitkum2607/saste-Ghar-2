@@ -135,10 +135,10 @@ const SEEDS: Seed[] = [
     rera: "HRERA/GGM/2024/117",
     featured: true,
     images: [
-      img("1481253127861-534498168948"),
-      img("1560185007-cde436f6a4d0"),
-      img("1512918728675-ed5a9ecdebfd"),
-      img("1541123437800-1bb1317badc2"),
+      img("1549499090-c9203d2b20ad"),
+      img("1745429523615-2a82c60bfc02"),
+      img("1556912172-45b7abe8b7e1"),
+      img("1522771739844-6a9f6d5f14af"),
     ],
     amenities: amen({ swimmingPool: true, gym: true, garden: true, furnished: true }),
     features: [
@@ -178,9 +178,9 @@ const SEEDS: Seed[] = [
     rera: "PRM/KA/RERA/1251/446/PR/2019/002311",
     featured: true,
     images: [
-      img("1580041065738-e72023775cdc"),
-      img("1560448204-e02f11c3d0e2"),
-      img("1522771739844-6a9f6d5f14af"),
+      img("1639335944967-03b902ead5fd"),
+      img("1745429523615-2a82c60bfc02"),
+      img("1556912172-45b7abe8b7e1"),
       img("1484154218962-a197022b5858"),
     ],
     amenities: amen({ swimmingPool: true, garden: true, petFriendly: true, gym: true }),
@@ -221,9 +221,9 @@ const SEEDS: Seed[] = [
     rera: "P51900000123",
     featured: true,
     images: [
-      img("1519999482648-25049ddd37b1"),
-      img("1502005229762-cf1b2da7c5d6"),
-      img("1586023492125-27b2c045efd7"),
+      img("1632400990400-416d5460f337"),
+      img("1745429523615-2a82c60bfc02"),
+      img("1522771739844-6a9f6d5f14af"),
       img("1556912172-45b7abe8b7e1"),
     ],
     amenities: amen({ swimmingPool: true, gym: true, furnished: true, security: true }),
@@ -264,10 +264,10 @@ const SEEDS: Seed[] = [
     rera: "UPRERAPRJ236711",
     featured: true,
     images: [
+      img("1650877489685-b7d8b1160b6f"),
       img("1460317442991-0ec209397118"),
       img("1567767292278-a4f21aa2d36e"),
-      img("1522771739844-6a9f6d5f14af"),
-      img("1484154218962-a197022b5858"),
+      img("1674821770946-4f774b1907d7"),
     ],
     amenities: amen({ swimmingPool: false, gym: false, garden: false }),
     features: [
@@ -306,10 +306,10 @@ const SEEDS: Seed[] = [
     rera: "P52100047781",
     featured: true,
     images: [
-      img("1479839672679-a46483c0e7c8"),
-      img("1493809842364-78817add7ffb"),
-      img("1512918728675-ed5a9ecdebfd"),
+      img("1549499090-c9203d2b20ad"),
+      img("1745429523615-2a82c60bfc02"),
       img("1556912172-45b7abe8b7e1"),
+      img("1522771739844-6a9f6d5f14af"),
     ],
     amenities: amen({ garden: true, gym: true, petFriendly: true }),
     features: [
@@ -348,8 +348,8 @@ const SEEDS: Seed[] = [
     rera: "DLRERA2019P0003",
     featured: false,
     images: [
-      img("1486406146926-c627a92ad1ab"),
-      img("1494203484021-3c454daf695d"),
+      img("1650877489685-b7d8b1160b6f"),
+      img("1745429523615-2a82c60bfc02"),
       img("1522771739844-6a9f6d5f14af"),
       img("1484154218962-a197022b5858"),
     ],
@@ -390,10 +390,10 @@ const SEEDS: Seed[] = [
     rera: "P02400005512",
     featured: true,
     images: [
-      img("1470723710355-95304d8aece4"),
+      img("1674821770946-4f774b1907d7"),
+      img("1460317442991-0ec209397118"),
+      img("1567767292278-a4f21aa2d36e"),
       img("1524758631624-e2822e304c36"),
-      img("1586023492125-27b2c045efd7"),
-      img("1541123437800-1bb1317badc2"),
     ],
     amenities: amen({ swimmingPool: false, gym: false, garden: true, furnished: true }),
     features: [
@@ -432,10 +432,10 @@ const SEEDS: Seed[] = [
     rera: "TN/01/Building/0123/2018",
     featured: false,
     images: [
+      img("1650877489685-b7d8b1160b6f"),
       img("1580041065738-e72023775cdc"),
       img("1505691938895-1758d7feb511"),
       img("1560448204-e02f11c3d0e2"),
-      img("1484154218962-a197022b5858"),
     ],
     amenities: amen({ swimmingPool: false, garden: true, petFriendly: true }),
     features: [

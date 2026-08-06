@@ -18,8 +18,8 @@ export function SellingSection() {
           className="relative order-1 aspect-[4/3] overflow-hidden rounded-2xl lg:order-none"
         >
           <Image
-            src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?auto=format&fit=crop&w=1400&q=80"
-            alt="A bright flat living room opening onto a terrace"
+            src="https://images.unsplash.com/photo-1745429523615-2a82c60bfc02?auto=format&fit=crop&w=1400&q=80"
+            alt="A spacious and modern Indian flat living room"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"

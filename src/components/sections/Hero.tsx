@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -13,27 +14,57 @@ const line = (delay: number) => ({
   transition: { duration: 0.7, delay, ease },
 });
 
+// Premium Indian property and interior images on Unsplash
+const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1549499090-c9203d2b20ad?auto=format&fit=crop&w=2400&q=85", // Modern luxury white highrise facade
+  "https://images.unsplash.com/photo-1745429523615-2a82c60bfc02?auto=format&fit=crop&w=2400&q=85", // Spacious modern Indian flat living room
+  "https://images.unsplash.com/photo-1632400990400-416d5460f337?auto=format&fit=crop&w=2400&q=85", // Premium flat/villa entrance and landscaping
+  "https://images.unsplash.com/photo-1650877489685-b7d8b1160b6f?auto=format&fit=crop&w=2400&q=85", // Tall residential tower rising against the sky
+  "https://images.unsplash.com/photo-1674821770946-4f774b1907d7?auto=format&fit=crop&w=2400&q=85", // Dusk skyline of modern residential complexes
+];
+
 export function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 4500); // Transitions every 4.5 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative flex min-h-[90vh] items-end overflow-hidden lg:min-h-screen">
-      {/* Background */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80"
-          alt="A fine apartment residence at dusk"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 overflow-hidden bg-black">
+        <div
+          className="absolute inset-0 flex"
+          style={{
+            width: `${HERO_IMAGES.length * 100}%`,
+            transform: `translateX(-${currentIndex * (100 / HERO_IMAGES.length)}%)`,
+            transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          {HERO_IMAGES.map((src, index) => (
+            <div
+              key={src}
+              className="relative h-full w-full"
+              style={{ width: `${100 / HERO_IMAGES.length}%` }}
+            >
+              <Image
+                src={src}
+                alt="Premium property feature"
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
         {/* Readability gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
-      </motion.div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
+      </div>
 
       {/* Content */}
       <div className="container-px relative z-10 w-full pb-16 pt-28 sm:pb-24">
